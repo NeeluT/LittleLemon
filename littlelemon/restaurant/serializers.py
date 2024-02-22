@@ -3,12 +3,6 @@ from rest_framework import serializers
 from djoser.serializers import UserCreateSerializer
 from .models import MenuItem, Booking
 
-
-# class UserSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = User
-#         fields = ['url', 'username', 'email', 'password']
-
 from djoser.serializers import UserCreateSerializer
 
 class CustomUserCreateSerializer(UserCreateSerializer):
@@ -18,7 +12,8 @@ class CustomUserCreateSerializer(UserCreateSerializer):
 class MenuItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = MenuItem
-        fields = '__all__'
+        fields = ['id','title','price','inventory']
+        
 
 class BookingSerializer(serializers.ModelSerializer):
     class Meta:

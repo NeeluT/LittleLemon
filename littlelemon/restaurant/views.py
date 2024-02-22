@@ -16,15 +16,8 @@ from .serializers import CustomUserCreateSerializer
 def index(request):
     return render(request, 'index.html', {})
 
-# class CustomUserCreateView(UserCreateView):
-#     serializer_class = CustomUserCreateSerializer
-
 class CustomUserViewSet(UserViewSet):
     serializer_class = CustomUserCreateSerializer
-
-# class UserViewSet(viewsets.ModelViewSet):
-#     queryset = User.objects.all()
-#     serializer_class = UserCreateSerializer
 
 # @api_view()
 # @permission_classes([IsAuthenticated])
@@ -33,11 +26,6 @@ class BookingViewSet(viewsets.ModelViewSet):
     queryset = Booking.objects.all()
     serializer_class = BookingSerializer
     permission_classes = [IsAuthenticated]
-    
-# class MenuItemsView(generics.ListCreateAPIView):
-#     queryset = MenuItem.objects.all()
-#     serializer_class = MenuItemSerializer
-#     permission_classes = [IsAuthenticated]
     
 class MenuItemsViewSet(viewsets.ViewSet, generics.ListCreateAPIView):
     queryset = MenuItem.objects.all()
@@ -49,8 +37,3 @@ class SingleMenuItemView(generics.RetrieveUpdateAPIView, generics.DestroyAPIView
     serializer_class = MenuItemSerializer
     permission_classes = [IsAuthenticated]
 
-# @api_view()
-# @permission_classes([IsAuthenticated])
-# # @authentication_classes([TokenAuthentication])
-# def msg(request):
-#      return Response({"message":"This view is protected"})
